@@ -1,176 +1,12 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f2f4e9">
-<meta name="description" content="面向10—12岁儿童的亲子社会化能力观察工具，含逐题测评、能力图表与8周家庭练习建议。">
-<title>孩子的社会化能力小测评｜10—12岁</title>
-<style>
-
-:root{
- --green:#52785f;--green-dark:#355b43;--green-soft:#e8f0e5;--sage:#cbdcc5;
- --cream:#fbf8f0;--paper:#fffdf8;--ink:#2e4034;--muted:#748075;--line:#e5e7dc;
- --gold:#c58b48;--gold-soft:#f7ecd9;--rose:#b96e68;--shadow:0 12px 34px rgba(59,78,54,.08);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:linear-gradient(180deg,#f2f4e9 0,#fbf8f0 360px,#f8f6ef 100%);
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
- color:var(--ink);line-height:1.7}
-button,input{font:inherit}button{cursor:pointer}
-.wrap{max-width:820px;margin:auto;padding:18px 14px 42px}
-.hero{position:relative;overflow:hidden;border-radius:30px;padding:30px 25px;
- background:linear-gradient(135deg,#e2ecdc 0%,#f7f2e5 62%,#f3e7d4 100%);
- border:1px solid #dce5d6;box-shadow:var(--shadow)}
-.hero:before{content:"";position:absolute;width:240px;height:240px;right:-85px;top:-105px;
- border-radius:50%;background:rgba(255,255,255,.4);box-shadow:-95px 190px 0 -55px rgba(141,169,126,.18)}
-.kicker{display:inline-flex;align-items:center;gap:7px;border-radius:99px;padding:6px 12px;
- background:rgba(255,253,248,.86);color:var(--green-dark);font-weight:800;font-size:12px;border:1px solid #d5e0d0}
-h1{font-size:clamp(29px,6vw,43px);line-height:1.22;margin:17px 0 12px;letter-spacing:-.7px;color:#2f5039}
-.hero p{max-width:540px;color:#596d5d;margin:0 0 20px;font-size:15px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.btn{border:0;border-radius:15px;padding:12px 18px;font-weight:800;background:var(--green);color:white;
- box-shadow:0 5px 13px rgba(61,94,66,.17);transition:transform .15s,background .15s}
-.btn:hover{background:var(--green-dark);transform:translateY(-1px)}
-.btn.secondary{background:var(--paper);color:var(--green-dark);border:1px solid #d7e0d2;box-shadow:none}
-.btn:disabled{opacity:.35;cursor:not-allowed;box-shadow:none;transform:none}
-.small-note{font-size:12px;color:#758174;margin-top:13px}
-@media(max-width:620px){.hero{padding:23px 18px}.hero p{max-width:100%}.hero:before{right:-130px}}
-.panel{background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:23px;padding:21px;margin-top:16px;box-shadow:var(--shadow)}
-.section-title{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:850;margin:0 0 5px;color:#344f39}
-.step{display:inline-grid;place-items:center;width:35px;height:35px;flex:0 0 35px;border-radius:13px;background:var(--green-soft);color:var(--green-dark);font-weight:900}
-.sub{color:var(--muted);font-size:13px;margin:0 0 16px}
-.progress-line{height:9px;background:#e9ece3;border-radius:99px;overflow:hidden;margin:13px 0 20px}
-.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#789b72,#c6a16b);border-radius:99px;transition:width .25s}
-.q-top{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px}
-.question{font-size:19px;font-weight:850;margin:12px 0 18px;line-height:1.55;color:#304c37}
-.option-list{display:grid;gap:10px}
-.option{display:flex;align-items:flex-start;gap:12px;text-align:left;border:1px solid #e0e5d9;background:#fffefa;border-radius:16px;padding:14px;color:var(--ink);transition:.18s;width:100%;line-height:1.6}
-.option:hover{border-color:#9db69a;transform:translateY(-1px)}
-.option.selected{border-color:var(--green);background:#edf4e9;box-shadow:inset 0 0 0 1px var(--green)}
-.opt-circle{width:23px;height:23px;border:1.5px solid #b8c6b3;border-radius:50%;flex:0 0 23px;display:grid;place-items:center;color:white;font-size:13px;margin-top:1px}
-.selected .opt-circle{background:var(--green);border-color:var(--green)}
-.nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
-.nav .btn{min-width:112px}
-.hidden{display:none!important}
-.result-head{background:linear-gradient(135deg,#edf3e7,#fbf1df);border:1px solid #e0e7d9;border-radius:19px;padding:18px}
-.scoreline{display:flex;align-items:center;gap:17px;flex-wrap:wrap}
-.score{width:88px;height:88px;border-radius:50%;background:#fffdf8;border:7px solid #c8d9bf;display:grid;place-items:center;font-weight:900;font-size:27px;color:var(--green-dark);box-shadow:0 5px 20px rgba(61,94,66,.08)}
-.score small{font-size:10px;display:block;text-align:center;color:var(--muted);font-weight:700;margin-top:-20px}
-.result-title{font-size:21px;font-weight:900;color:#304c37}
-.pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
-.pill{border-radius:99px;background:#fffdf8;border:1px solid #dfe5d8;padding:4px 10px;font-size:12px;color:#5e745e}
-.skill-row{margin:15px 0}
-.skill-top{display:flex;justify-content:space-between;font-size:13px;gap:8px}
-.skill-top strong{color:var(--green-dark)}
-.bar{height:9px;border-radius:99px;background:#e9ece3;margin-top:7px;overflow:hidden}
-.bar span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#789b72,#c6a16b)}
-.recommend{border-radius:17px;background:#fbf2df;border:1px solid #efe0bf;padding:16px;margin-top:15px}
-.recommend h3{margin:0 0 6px;font-size:16px;color:#74572e}
-.plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
-.week{border:1px solid #e3e6da;border-radius:18px;padding:15px;background:linear-gradient(160deg,#fffefa,#f6f7ef)}
-.week .num{display:inline-grid;place-items:center;width:33px;height:33px;border-radius:12px;background:#e5eee0;color:var(--green-dark);font-weight:900;margin-right:7px;flex:0 0 33px}
-.week h3{font-size:15px;display:flex;align-items:center;margin:0 0 9px;color:#3e5b43}
-.week p{font-size:13px;color:#647366;margin:7px 0}
-.tag{font-size:11px;color:#426b4b;background:#e8f0e4;border-radius:99px;padding:3px 9px;display:inline-block;font-weight:800}
-.week ul{padding-left:18px;font-size:13px;margin:8px 0 0}
-.week li{margin:6px 0}
-details{border:1px solid var(--line);border-radius:15px;padding:13px 15px;background:#fffefa;margin-top:9px}
-summary{font-weight:800;cursor:pointer;color:#405744}
-.daily-list{display:grid;gap:10px}
-.daily{padding:12px 13px;border-radius:14px;background:#f6f7ef;border:1px solid #e7e9df}
-.daily strong{display:block;margin-bottom:4px;color:#405744}
-.checklist{display:grid;gap:9px}
-.checkitem{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border:1px solid #e1e6dc;border-radius:13px;background:#fffefa;font-size:14px}
-.checkitem input{margin-top:5px;accent-color:var(--green);width:18px;height:18px;flex:0 0 18px}
-.footer{text-align:center;color:#7b8478;font-size:12px;padding:22px 10px}
-.toast{font-size:13px;color:#98652f;margin-top:8px;min-height:20px}
-@media(min-width:720px){.quiz-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:start}.quiz-layout .panel{margin-top:16px}.plan-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.wrap{padding:10px 10px 28px}.panel{padding:16px;border-radius:20px}.plan-grid{grid-template-columns:1fr}.question{font-size:18px}.nav .btn{min-width:0;flex:1;padding:12px 10px}.scoreline{align-items:flex-start}.result-title{font-size:19px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
-
-</style>
-</head>
-<body>
-<div class="wrap">
-  <header class="hero">
-    <span class="kicker">🌱 亲子成长工具 · 10—12岁</span>
-    <h1>孩子的社会化<br>能力小测评</h1>
-    <p>用几个真实生活场景，了解孩子在同伴关系中的优势与困难，并生成一份可执行的8周家庭训练建议。</p>
-    <div class="hero-actions">
-      <button class="btn" id="startBtn">开始测评 →</button>
-      <button class="btn secondary" id="planBtn">先看8周计划</button>
-    </div>
-    <div class="small-note">约3分钟 · 无标准答案 · 仅供家庭观察参考，不是心理诊断</div>
-    
-  </header>
-
-  <section class="panel" id="quizPanel">
-    <div class="section-title"><span class="step">1</span>同伴关系情境测评</div>
-    <p class="sub">请家长结合孩子最近一个月的真实表现作答；尽量选择“最常发生”的情况，而不是希望孩子做到的情况。</p>
-    <div class="q-top"><span id="qCount">第1题 / 共12题</span><span id="answered">已完成 0 题</span></div>
-    <div class="progress-line"><div class="progress-fill" id="progress"></div></div>
-    <div id="questionArea"></div>
-    <div class="nav">
-      <button class="btn secondary" id="prevBtn" disabled>← 上一题</button>
-      <button class="btn" id="nextBtn" disabled>下一题 →</button>
-    </div>
-    <div class="toast" id="quizToast" role="status"></div>
-  </section>
-
-  <section class="panel hidden" id="resultPanel">
-    <div class="section-title"><span class="step">2</span>测评结果与建议</div>
-    <p class="sub">结果是训练起点，不是给孩子贴标签。每项能力都可以通过练习逐步发展。下方条形图用于比较各项能力的当前观察情况。</p>
-    <div id="resultContent"></div>
-    <div class="hero-actions" style="margin-top:16px">
-      <button class="btn" id="showPlanBtn">查看我的8周训练方案 ↓</button>
-      <button class="btn secondary" id="retakeBtn">重新测评</button>
-    </div>
-  </section>
-
-  <section class="panel" id="planSection">
-    <div class="section-title"><span class="step">3</span>8周家庭训练计划</div>
-    <p class="sub">建议每周练习5天，每天10—15分钟，并安排一次自然的同伴活动。按孩子的节奏调整，不需要追求打卡完美。</p>
-    <div class="plan-grid" id="planGrid"></div>
-  </section>
-
-  <section class="panel">
-    <div class="section-title"><span class="step">4</span>每天5分钟：亲子复盘</div>
-    <p class="sub">每天选一个小事件讨论即可，不要像审问一样连续追问。</p>
-    <div class="daily-list">
-      <div class="daily"><strong>① 今天发生了什么？</strong>“今天和同学相处时，有没有哪一刻让你开心或不舒服？”</div>
-      <div class="daily"><strong>② 当时你怎么想？</strong>“具体发生了什么？你觉得对方可能怎么想？”</div>
-      <div class="daily"><strong>③ 你做了什么？</strong>“你当时怎么回应的？哪些地方对你有帮助？”</div>
-      <div class="daily"><strong>④ 下次可以怎么做？</strong>“如果再遇到类似情况，你想尝试什么不同的办法？”</div>
-      <div class="daily"><strong>⑤ 你需要我怎样帮你？</strong>“你希望我帮你想办法，还是先听你说一说？”</div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="section-title"><span class="step">5</span>家长介入原则</div>
-    <details open><summary>普通分歧、一次被拒绝、游戏争执</summary><p>先听孩子讲述，帮助他整理事实与感受，再让孩子尝试自己处理。家长不急着替孩子出头，也不把一次不顺利当成失败。</p></details>
-    <details><summary>反复误会、关系持续紧张、孩子明显焦虑</summary><p>与孩子一起制定应对方案，必要时与老师沟通，了解学校里的具体情况。</p></details>
-    <details><summary>持续欺凌、威胁、身体伤害、勒索或网络羞辱</summary><p>优先保护孩子，保存相关记录，并联系学校及适当的专业人员。不能以“锻炼社交能力”为由要求孩子忍受伤害。</p></details>
-    <div class="recommend" style="background:#f0fbf7;border-color:#d2f0e5">
-      <h3>🌼 家长记住这句话</h3>
-      先建立安全感，再练习交往；先教会表达，再要求解决冲突；允许孩子经历小挫折，但不让孩子独自承受持续伤害。
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="section-title"><span class="step">6</span>8周进步追踪</div>
-    <p class="sub">第1周和第8周各评一次。依据实际观察，不要只看孩子朋友多少或是否外向。</p>
-    <div class="checklist" id="tracking"></div>
-    <div class="hero-actions" style="margin-top:14px">
-      <button class="btn secondary" id="saveTrackBtn">保存本次记录（本机）</button>
-      <button class="btn secondary" id="clearTrackBtn">清空勾选</button>
-    </div>
-    <div class="small-note" id="trackMsg">勾选状态只保存在当前页面内；此页面不会上传孩子的答案。</div>
-  </section>
-  <div class="footer">给孩子时间，也给关系时间。每一次真实、温和的尝试，都是进步。<br>本页面为家庭教育参考工具，不替代学校支持或专业评估。</div>
-</div>
-<script>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f1e8"><title>孩子的社会化能力小测评</title><style>
+:root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#303c32;--muted:#687568;--green:#52745b;--pale:#e7eee4;--line:#dce3d7;--gold:#b88b4a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}.wrap{max-width:850px;margin:auto;padding:18px 14px 45px}.hero,.panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px;margin-bottom:15px;box-shadow:0 8px 25px #344b3210}.hero{background:linear-gradient(130deg,#e7eee4,#fffdf8 70%)}.kicker,.tag{display:inline-block;background:var(--pale);color:var(--green);border-radius:30px;padding:4px 11px;font-size:13px;font-weight:700}h1{font-size:clamp(28px,5vw,42px);line-height:1.2;margin:15px 0 10px}h2{font-size:21px;margin:0 0 5px}h3{margin:8px 0}.muted,.sub{color:var(--muted);font-size:14px}.btn{border:0;border-radius:12px;padding:11px 16px;background:var(--green);color:white;font:inherit;font-weight:700;cursor:pointer}.btn.alt{background:white;color:var(--green);border:1px solid var(--line)}.btn:disabled{opacity:.4}.row{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.progress{height:7px;border-radius:9px;background:#e8e8df;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;background:var(--green);width:0}.option{display:flex;gap:10px;width:100%;text-align:left;margin:9px 0;padding:13px;border:1px solid var(--line);border-radius:13px;background:white;color:var(--ink);font:inherit;cursor:pointer}.option.sel{border:2px solid var(--green);background:#f0f5ed}.hidden{display:none!important}.score{font-size:52px;font-weight:800;color:var(--green)}.bar{height:9px;background:#e8e9e0;border-radius:8px;overflow:hidden;margin:5px 0 13px}.bar span{display:block;height:100%;background:var(--green)}.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.week,.item{background:white;border:1px solid var(--line);border-radius:15px;padding:14px}.week p,.week li{font-size:14px}.pill{display:inline-block;border-radius:20px;background:var(--pale);padding:3px 9px;margin:3px;font-size:13px}.check{display:flex;gap:9px;margin:10px 0;padding:10px;border:1px solid var(--line);border-radius:12px;background:white}.footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}.nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}.stage-label{font-size:13px;color:var(--muted);margin-bottom:8px}svg{max-width:100%;height:auto;display:block;margin:auto}@media(max-width:480px){.hero,.panel{padding:17px}.wrap{padding:10px}}
+</style></head><body><main class="wrap"><header class="hero"><span class="kicker">亲子成长工具 · 10—12岁</span><h1>孩子的社会化<br>能力小测评</h1><p>结合最近一个月的真实表现作答，逐步查看测评结果，并获得对应的家庭训练建议。</p><p class="muted">约3分钟 · 无标准答案 · 结果用于家庭观察，不是心理诊断</p><button class="btn" id="start">开始测评 →</button></header>
+<section class="panel" id="quiz"><div class="stage-label">第1步 / 共6步</div><h2>同伴关系情境测评</h2><p class="sub">请选最符合孩子最近一个月常见表现的一项。</p><div class="row"><span id="qnum">第1题 / 共12题</span><span id="done">已完成0题</span></div><div class="progress"><span id="prog"></span></div><div id="question"></div><div class="nav"><button class="btn alt" id="prev">← 上一题</button><button class="btn" id="next" disabled>下一题 →</button></div><p id="toast" class="muted"></p></section>
+<section class="panel hidden" id="s2"><div class="stage-label">第2步 / 共6步</div><h2>综合测评得分</h2><div id="overall"></div><div class="nav"><button class="btn alt" data-back="quiz">← 修改答案</button><button class="btn" data-next="s3">查看各维度得分 →</button></div></section>
+<section class="panel hidden" id="s3"><div class="stage-label">第3步 / 共6步</div><h2>各维度能力得分</h2><p class="sub">雷达图以各维度平均分（1—3分）呈现。</p><div id="dimensions"></div><div id="radar"></div><div class="nav"><button class="btn alt" data-back="s2">← 上一步</button><button class="btn" data-next="s4">查看能力分析 →</button></div></section>
+<section class="panel hidden" id="s4"><div class="stage-label">第4步 / 共6步</div><h2>能力分析与训练重点</h2><div id="analysis"></div><div class="nav"><button class="btn alt" data-back="s3">← 上一步</button><button class="btn" data-next="s5">查看个性化8周计划 →</button></div></section>
+<section class="panel hidden" id="s5"><div class="stage-label">第5步 / 共6步</div><h2>个性化8周训练计划</h2><p class="sub">训练内容根据本次得分排序生成；低分优先练基础，高分侧重迁移、巩固与自主处理。</p><div id="plan"></div><div class="nav"><button class="btn alt" data-back="s4">← 上一步</button><button class="btn" data-next="s6">查看家长行动清单 →</button></div></section>
+<section class="panel hidden" id="s6"><div class="stage-label">第6步 / 共6步</div><h2>家长行动清单与复盘问题</h2><div id="family"></div><h3>本周行动清单</h3><div id="checklist"></div><div class="nav"><button class="btn alt" data-back="s5">← 上一步</button><button class="btn" id="again">重新测评</button></div><p class="muted">勾选记录只在当前页面中有效，不会上传孩子的答案。</p></section><footer class="footer">给孩子时间，也给关系时间。本工具为家庭教育参考，不替代专业评估。</footer></main><script>
 const questions = [
  {cat:"主动交流",q:"到了课间，孩子想和同学一起玩时，通常会怎么做？",opts:["大多等别人来邀请，自己很少开口","偶尔会问，但常常不知道怎么开始","能自然打招呼、提问或发出邀请"]},
  {cat:"加入活动",q:"看到几位同学已经开始聊天或玩游戏，孩子通常会？",opts:["站在旁边，不知道怎样加入","先观察，偶尔询问能不能参加","会先了解大家在做什么，再找合适的时机加入"]},
@@ -195,49 +31,81 @@ const plans=[
 ["练习真实的社会交往","现实应用","目标：把练习用于现实生活。","安排一次球类、兴趣活动或小项目，让孩子参与邀请、协商和安排。","活动后问：“哪一步是你自己完成的？下次想调整什么？”"],
 ["复盘、巩固和自主处理","综合应用","目标：从依赖提醒转向自己判断。","回顾进步与困难，让孩子选出下一阶段最想练的一项能力。","“哪种方法最有用？遇到类似情况，你下一步准备怎么做？”"]
 ];
-let current=0;const answers={};
-const questionArea=document.getElementById("questionArea");
-function renderQuestion(){
- const q=questions[current], chosen=answers[current];
- document.getElementById("qCount").textContent=`第${current+1}题 / 共${questions.length}题`;
- document.getElementById("answered").textContent=`已完成 ${Object.keys(answers).length} 题`;
- document.getElementById("progress").style.width=(Object.keys(answers).length/questions.length*100)+"%";
- questionArea.innerHTML=`<div class="question">${q.q}</div><div class="option-list">${q.opts.map((o,i)=>`<button class="option ${chosen===i?'selected':''}" data-i="${i}"><span class="opt-circle">${chosen===i?'✓':''}</span><span>${o}</span></button>`).join("")}</div>`;
- questionArea.querySelectorAll(".option").forEach(b=>b.addEventListener("click",()=>{answers[current]=Number(b.dataset.i);document.getElementById("quizToast").textContent="";renderQuestion();}));
- document.getElementById("prevBtn").disabled=current===0;
- document.getElementById("nextBtn").textContent=current===questions.length-1?"查看测评结果 →":"下一题 →";
- document.getElementById("nextBtn").disabled=answers[current]===undefined;
+let current=0, answers={}, scores=[], pct=0, low=[];const $=id=>document.getElementById(id);
+function renderQ(){let q=questions[current];$('qnum').textContent=`第${current+1}题 / 共${questions.length}题`;$('done').textContent=`已完成${Object.keys(answers).length}题`;$('prog').style.width=(Object.keys(answers).length/questions.length*100)+'%';$('question').innerHTML=`<strong>${q.q}</strong>`+q.opts.map((o,i)=>`<button class="option ${answers[current]===i?'sel':''}" data-i="${i}"><b>${['A','B','C'][i]}</b> ${o}</button>`).join('');$('question').querySelectorAll('button').forEach(b=>b.onclick=()=>{answers[current]=+b.dataset.i;renderQ()});$('prev').disabled=current===0;$('next').disabled=answers[current]===undefined;$('next').textContent=current===questions.length-1?'生成测评结果 →':'下一题 →'}
+function calc(){let cats={};questions.forEach((q,i)=>{(cats[q.cat]??=[]).push(answers[i]+1)});scores=Object.entries(cats).map(([name,a])=>({name,score:a.reduce((x,y)=>x+y,0)/a.length}));let total=Object.values(answers).reduce((s,v)=>s+v+1,0);pct=Math.round(total/(questions.length*3)*100);low=[...scores].sort((a,b)=>a.score-b.score);}
+function stage(id){$(id).classList.remove('hidden');$(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function makeResults(){calc();let mode=pct<55?'基础支持':pct<80?'情境巩固':'优势迁移';$('overall').innerHTML=`<div class="score">${pct}<small style="font-size:16px"> / 100</small></div><h3>${pct<55?'建议先建立安全感与基础表达':pct<80?'已有一定基础，建议练习真实情境':'整体表现较好，建议巩固复杂情境下的灵活应对'}</h3><p>${pct<55?'先降低练习难度，成人示范后再让孩子尝试。':pct<80?'把技能放进日常交往中，优先练习最薄弱的两项。':'减少家长提示，关注复杂冲突、关系修复与自主判断。'}</p><span class="pill">训练模式：${mode}</span><p class="muted">这是家庭观察参考值，不是临床诊断或对孩子的固定评价。</p>`;
+$('dimensions').innerHTML=scores.map(s=>`<div><div class="row"><b>${s.name}</b><span>${s.score.toFixed(1)} / 3</span></div><div class="bar"><span style="width:${s.score/3*100}%"></span></div></div>`).join('');
+let vals=scores.map(s=>s.score),n=vals.length,cx=180,cy=155,r=105;let pts=vals.map((v,i)=>{let a=-Math.PI/2+2*Math.PI*i/n;return [cx+Math.cos(a)*r*v/3,cy+Math.sin(a)*r*v/3]});let grid=[1,2,3].map(k=>`<polygon points="${vals.map((_,i)=>{let a=-Math.PI/2+2*Math.PI*i/n;return `${cx+Math.cos(a)*r*k/3},${cy+Math.sin(a)*r*k/3}`}).join(' ')}" fill="none" stroke="#dce3d7"/>`).join('');let axes=vals.map((_,i)=>{let a=-Math.PI/2+2*Math.PI*i/n;return `<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*r}" y2="${cy+Math.sin(a)*r}" stroke="#dce3d7"/>`}).join('');$('radar').innerHTML=`<svg viewBox="0 0 360 315" role="img" aria-label="各维度能力雷达图">${grid}${axes}<polygon points="${pts.map(p=>p.join(',')).join(' ')}" fill="#8ca98b66" stroke="#52745b" stroke-width="2"/>${pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="#52745b"/>`).join('')}${scores.map((s,i)=>{let a=-Math.PI/2+2*Math.PI*i/n;return `<text x="${cx+Math.cos(a)*128}" y="${cy+Math.sin(a)*128}" font-size="10" text-anchor="middle" fill="#303c32">${s.name}</text>`}).join('')}</svg>`;
+let weakest=low.slice(0,3);$('analysis').innerHTML=`<div class="item"><span class="tag">${modeLabel()}</span><h3>优先关注：${weakest.map(s=>s.name).join('、')}</h3><p>${pct<55?'从低压力、可重复的短练习开始，家长先示范，不急于要求孩子独立解决复杂社交问题。':pct<80?'以最薄弱的两项为主，每次练习后只反馈一个具体行为，逐步迁移到真实同伴场景。':'不把高分理解为无需支持；重点观察压力情境中的稳定性，练习复杂协商、关系修复和自主判断。'}</p></div>`+scores.map(s=>`<div class="item"><b>${s.name} · ${s.score.toFixed(1)}/3</b><p>${s.score<1.7?'当前相对薄弱：建议拆成小步骤，由家长示范并进行角色扮演。':s.score<2.5?'正在发展：建议在日常生活中练习，并在事后温和复盘。':'相对优势：通过更复杂的真实情境巩固，逐步减少成人提醒。'}</p></div>`).join('');
+let ranked=[...low];let weeks=[];for(let i=0;i<8;i++){let s=ranked[i%ranked.length],base=plans.find(p=>p[0].includes(s.name)||p[1].includes(s.name))||plans[i];let title,activity,phrase;if(pct<55){title=`建立${s.name}基础`;activity=`低压力练习：家长先示范，再与孩子角色扮演；每次只练一个小步骤。`;phrase='“我们先试一遍，你想从哪一步开始？”'}else if(pct<80){title=`在真实场景练习${s.name}`;activity=`安排一次家庭游戏或同伴活动，事前约定目标，事后复盘一次真实行为。`;phrase='“刚才哪一步有帮助？下次你想怎么试？”'}else{title=`迁移与巩固${s.name}`;activity=`在更复杂的合作或意见不一致情境中练习，家长观察为主，减少直接提示。`;phrase='“如果没有我提醒，你准备怎样处理？”'}if(i>=3){title=['综合应用与复盘','巩固第二薄弱项','现实场景迁移','总结与自主计划','回顾进步与下一步'][i-3]||title;activity=pct<55?'重复已学技能，稳定后再增加难度。':pct<80?'把两项技能组合使用，练习后记录一个进步和一个待练点。':'由孩子自己选场景、制定策略，家长只提供必要支持。';phrase=pct<55?'“这次你愿意尝试，已经是进步。”':pct<80?'“遇到类似情况，你想先做什么？”':'“你怎么判断这段关系是否互相尊重？”'}weeks.push({title,activity,phrase,dim:s.name});}
+$('plan').innerHTML=`<p class="sub">本次模式：${modeLabel()}。优先维度按本次得分由低到高排序。</p><div class="cardgrid">${weeks.map((w,i)=>`<article class="week"><span class="tag">第${i+1}周 · ${w.dim}</span><h3>${w.title}</h3><p>${w.activity}</p><p><b>家长话术：</b>${w.phrase}</p></article>`).join('')}</div>`;
+let primary=weakest[0].name,secondary=weakest[1]?.name||primary;
+const coaching={
+'主动交流':{q:'今天有没有一次你想和同学说话、但还没开口的时刻？如果再来一次，你可以用哪句话开始？',task:'练习一次自然问候或提出一个与共同活动有关的问题。',phrase:'“你们在玩什么？我可以一起吗？”'},
+'加入活动':{q:'今天看到别人已经在聊天或玩游戏时，你观察到了什么？怎样加入会比较自然？',task:'观察一次小组活动，练习先了解规则，再礼貌询问能否参加。',phrase:'“你们现在玩到哪一步了？还缺人吗？”'},
+'接受拒绝':{q:'如果别人今天没空和你玩，你当时有什么感受？除了认定对方不喜欢你，还可能有哪些原因？',task:'角色扮演一次被拒绝的情境，练习表达失落并选择另一个活动。',phrase:'“好吧，那我们下次再约。”'},
+'倾听回应':{q:'今天和别人说话时，你有没有先听完再回应？你记得对方说的一件重要的事是什么？',task:'进行一次三分钟对话，练习不打断、复述对方意思，再提出一个相关问题。',phrase:'“你的意思是……对吗？”'},
+'合作协商':{q:'今天意见不一样时，你听到了对方的什么想法？有没有一种两个人都能接受的办法？',task:'玩桌游或完成家庭任务时，练习先复述对方意见，再一起提出两个方案。',phrase:'“我们能不能各试一次，再选一个都接受的办法？”'},
+'冲突表达':{q:'今天有没有哪件事让你不舒服？你能不能说清发生了什么、自己的感受和希望对方怎么做？',task:'用“发生了什么—我的感受—我的请求”练习表达一次小分歧。',phrase:'“你刚才……我有点……下次可以……吗？”'},
+'理解他人':{q:'今天有没有一件事让你猜不透别人的想法？除了你最先想到的解释，还可能有什么原因？',task:'对一个社交情境列出两种可能解释；不确定时练习平静地询问。',phrase:'“我不太确定你的意思，可以跟我说说吗？”'},
+'修复关系':{q:'如果今天和朋友有一点不愉快，你希望关系接下来怎样？有什么尊重彼此的方式可以重新沟通？',task:'练习为自己具体的行为道歉，或在合适时机邀请对方重新交流。',phrase:'“刚才我……可能让你不舒服，对不起。你愿意聊聊吗？”'},
+'表达边界':{q:'今天有没有遇到你不太愿意做、但担心拒绝后别人不高兴的事？你可以怎样清楚表达？',task:'角色扮演一次不合理要求，练习坚定拒绝；若对方持续施压，明确求助对象。',phrase:'“我不想这样做，我们换个办法吧。”'},
+'友谊维护':{q:'今天你有没有做一件让朋友感到被关心或被尊重的事？你们约好的事情有没有做到？',task:'主动问候或关心朋友一次，并认真兑现一个小约定，同时尊重对方的空间。',phrase:'“你上次说的事情后来怎么样了？”'},
+'面对玩笑':{q:'今天有没有一句玩笑让你不舒服？你希望对方知道什么？如果对方不停下来，你可以找谁帮忙？',task:'练习用平静而坚定的方式表达不喜欢；若伤害持续，告诉可信任的成人。',phrase:'“我不喜欢这个玩笑，请停下来。”'},
+'求助判断':{q:'如果同伴持续嘲笑、威胁或故意排斥你，你会找哪位可信任的成人？可以怎样把事情说清楚？',task:'和家长一起确认两位可信任的成人，并练习描述事件、时间和需要的帮助。',phrase:'“这件事持续发生，让我不安全，我需要你帮忙。”'}
+};
+const lowNames=low.slice(0,2).map(x=>x.name);
+const highNames=[...scores].sort((a,b)=>b.score-a.score).slice(0,2).map(x=>x.name);
+// 高分模式不再因所有维度同分而固定挑选题目开头的维度，而是转向复杂情境、自主判断和关系维护。
+const advanced={
+'主动交流':{q:'当你已经能主动开口时，怎样判断对方现在是否有时间聊天，并自然结束对话？',task:'练习根据对方回应调整交流方式：对方有兴趣就继续，对方忙时礼貌结束。',phrase:'“看起来你现在在忙，我们晚点再聊。”'},
+'加入活动':{q:'加入一个已经开始的活动时，怎样既尊重现有规则，也能提出自己的想法？',task:'在桌游或小组任务中练习先理解规则，再提出一个有助于团队的建议。',phrase:'“我理解现在的规则了，可以提一个补充建议吗？”'},
+'接受拒绝':{q:'当别人拒绝邀请时，你怎样区分一次没空和长期不愿意交往，并照顾自己的感受？',task:'讨论两种不同情境：对方偶尔没空与持续不回应，分别练习合适的下一步。',phrase:'“没关系，我们有机会再约；我也可以安排自己的活动。”'},
+'倾听回应':{q:'当你不同意朋友的观点时，怎样先准确理解对方，再表达不同意见？',task:'进行一次观点不同的对话，先复述对方观点，再用尊重的方式说出自己的理由。',phrase:'“我听懂你的想法了，我的看法有一点不同……”'},
+'合作协商':{q:'当团队里没有一个方案能让所有人完全满意时，怎样比较利弊并达成公平决定？',task:'安排一个家庭共同任务，让每个人提出方案，再共同确定标准并做决定。',phrase:'“我们先说说每个方案的好处和困难，再一起决定。”'},
+'冲突表达':{q:'当双方都觉得自己有道理时，怎样把争论从“谁对谁错”转为解决问题？',task:'演练一次双方都有理由的分歧，分别说出事实、感受、需求和一个可协商方案。',phrase:'“我们都很在意这件事，能不能一起找个办法？”'},
+'理解他人':{q:'当朋友的行为有多种解释时，你怎样避免过早下结论，同时确认真实想法？',task:'对一个模糊社交情境列出至少两种解释，再练习用开放问题确认。',phrase:'“我不想直接猜，你当时是怎么想的？”'},
+'修复关系':{q:'当你已经道歉但关系还没恢复时，怎样尊重对方的时间，同时持续为修复关系负责？',task:'讨论道歉、改变行为和给对方空间的区别，选择一个具体行动而非反复催促。',phrase:'“我理解你还需要时间，我会先把自己能改的地方做好。”'},
+'表达边界':{q:'当朋友不同意你的界限时，怎样坚定表达、提出替代方案，并判断何时需要求助？',task:'角色扮演一次同伴持续施压的情境，练习重复边界、离开现场和向成人求助。',phrase:'“我已经说过不愿意。如果还继续，我会离开并找老师帮忙。”'},
+'友谊维护':{q:'怎样在维持友谊的同时，尊重彼此不同的兴趣、时间和其他朋友？',task:'与孩子一起制定一个既能主动关心朋友、又不要求对方随时回应的联系计划。',phrase:'“有空时我们再约，你也可以按自己的安排来。”'},
+'面对玩笑':{q:'当一群人都觉得某个玩笑好笑、但有人明显不舒服时，你可以怎样做？',task:'讨论旁观者如何温和制止伤人的玩笑，并在需要时支持当事人寻求帮助。',phrase:'“我们换个话题吧，这个玩笑可能让人不舒服。”'},
+'求助判断':{q:'怎样判断一场普通分歧与持续欺凌、威胁之间的区别？遇到后者时如何清楚求助？',task:'和家长一起辨别普通冲突与持续伤害，确认可信任成人和求助步骤。',phrase:'“这不是一次普通争执，它持续发生并让我不安全，我需要帮助。”'}
+};
+const genericAdvanced={
+q:'本次整体得分较高：今天有没有一个需要你同时考虑自己、他人和情境的社交时刻？你如何判断下一步？',
+task:'本周选择一次真实合作或意见不一致的场景，由孩子自己制定策略、尝试处理，家长只在需要时支持。',
+phrase:'“你考虑了哪些人的感受？如果没人提醒，你下一步会怎么做？”'
+};
+let support1,support2,daily,weeklyTasks;
+if(pct>=80){
+  support1=advanced[highNames[0]]||genericAdvanced;
+  support2=advanced[highNames[1]]||genericAdvanced;
+  primary=highNames[0];secondary=highNames[1]||primary;
+  daily=[
+    '今天哪一次互动需要你考虑不同人的感受或立场？',
+    `进阶复盘（${primary}）：${support1.q}`,
+    `情境迁移（${secondary}）：${support2.q}`,
+    '今天你有没有在不依赖提醒的情况下自己做决定？结果怎样？',
+    '下次遇到更复杂的情况，你准备怎样判断边界、尊重和公平？'
+  ];
+  weeklyTasks=[support1.task,support2.task,'本周安排一次需要合作、协商或处理不同意见的真实活动，让孩子自己提出方案。','由孩子自主复盘一次：记录判断依据、实际结果，以及下次会如何调整。','如涉及持续欺凌、威胁或伤害，优先保护孩子并联系可信任成人。'];
+}else{
+  support1=coaching[lowNames[0]]||coaching['主动交流'];support2=coaching[lowNames[1]]||support1;
+  primary=lowNames[0];secondary=lowNames[1]||primary;
+  daily=[
+    '今天和同伴相处时，哪一刻让你开心或不舒服？',
+    `重点练习（${primary}）：${support1.q}`,
+    ...(secondary!==primary?[`第二重点（${secondary}）：${support2.q}`]:[]),
+    '今天你做过的哪一个小尝试值得肯定？下次想保留或调整什么？',
+    pct<55?'家长陪伴复盘：你希望我先示范、陪你练一次，还是先听你说？':'下次遇到类似情况，你愿意自己先尝试哪一步？需要家长怎样支持？'
+  ];
+  weeklyTasks=[support1.task,...(secondary!==primary?[support2.task]:[]),pct<55?'家长先示范一次，再陪孩子低压力练习；一次只练一个小步骤。':'把目标放进一次自然的家庭或同伴活动，事后只反馈一个具体行为。','本周记录一次真实场景：发生了什么、孩子尝试了什么、下一步可以怎样做。','如涉及持续欺凌、威胁或伤害，优先保护孩子并联系可信任成人，不把它当作普通社交练习。'];
 }
-document.getElementById("prevBtn").addEventListener("click",()=>{if(current>0){current--;renderQuestion()}});
-document.getElementById("nextBtn").addEventListener("click",()=>{if(answers[current]===undefined)return;if(current<questions.length-1){current++;renderQuestion()}else showResults()});
-function showResults(){
- const unanswered=questions.findIndex((_,i)=>answers[i]===undefined);
- if(unanswered>=0){current=unanswered;renderQuestion();document.getElementById("quizToast").textContent="还有题目未完成，请选择最符合实际表现的一项。";return}
- const cats={};questions.forEach((q,i)=>{if(!cats[q.cat])cats[q.cat]=[];cats[q.cat].push(answers[i]+1)});
- const scores=Object.entries(cats).map(([name,arr])=>({name,score:arr.reduce((a,b)=>a+b,0)/arr.length}));
- const total=questions.reduce((s,q,i)=>s+(answers[i]+1),0), max=questions.length*3, pct=Math.round(total/max*100);
- const low=[...scores].sort((a,b)=>a.score-b.score).slice(0,3);
- let title,desc;
- if(pct<48){title="先从安全感与基础表达开始";desc="孩子可能需要更多低压力的练习和成人支持。先练主动表达、识别感受与求助，不要一次要求他处理复杂关系。"}
- else if(pct<76){title="已有基础，重点练习真实情境";desc="孩子在部分场景中能应对，但遇到压力时可能还需要提示。把练习放进日常活动，并一次只聚焦一到两项能力。"}
- else{title="基础较好，继续巩固与灵活应用";desc="孩子自评表现整体较好。继续观察真实互动，重点关注复杂冲突、关系变化和如何在尊重他人的同时守住边界。"}
- document.getElementById("resultContent").innerHTML=`<div class="result-head"><div class="scoreline"><div class="score">${pct}<small>综合参考值</small></div><div><div class="result-title">${title}</div><div style="color:#536d8d;font-size:14px">${desc}</div><div class="pills"><span class="pill">低分不等于能力差</span><span class="pill">建议结合真实观察</span></div></div></div></div><div style="margin-top:18px"><h3 style="margin:0 0 8px">各项能力得分图</h3><p class="sub">每项 1—3 分，分数越高表示家长观察到的相关表现越稳定；单题结果仅供参考。</p>${scores.map(s=>`<div class="skill-row"><div class="skill-top"><span>${s.name}</span><strong>${s.score.toFixed(1)} / 3</strong></div><div class="bar"><span style="width:${s.score/3*100}%"></span></div></div>`).join("")}</div><div class="recommend"><h3>🎯 建议优先练习</h3><div>${low.map(s=>`<span class="pill" style="display:inline-block;margin:3px">${s.name}</span>`).join("")}</div><p style="margin:8px 0 0;font-size:14px">先从最需要支持的1—2项开始，不必一次全部训练。每周回顾真实发生的小事件，并肯定孩子的具体尝试。</p></div>`;
- document.getElementById("quizPanel").classList.add("hidden");document.getElementById("resultPanel").classList.remove("hidden");
- document.getElementById("resultPanel").scrollIntoView({behavior:"smooth",block:"start"});
-}
-function renderPlans(){
- document.getElementById("planGrid").innerHTML=plans.map((p,i)=>`<article class="week"><h3><span class="num">${i+1}</span>第${i+1}周</h3><div class="tag">${p[1]}</div><p><strong>${p[0]}</strong></p><p>${p[2]}</p><ul><li>${p[3]}</li><li><strong>话术练习：</strong>${p[4]}</li></ul></article>`).join("");
-}
-function resetQuiz(){Object.keys(answers).forEach(k=>delete answers[k]);current=0;renderQuestion();document.getElementById("resultPanel").classList.add("hidden");document.getElementById("quizPanel").classList.remove("hidden");document.getElementById("quizToast").textContent="";document.getElementById("quizPanel").scrollIntoView({behavior:"smooth",block:"start"});}
-document.getElementById("startBtn").addEventListener("click",()=>document.getElementById("quizPanel").scrollIntoView({behavior:"smooth",block:"start"}));
-document.getElementById("planBtn").addEventListener("click",()=>document.getElementById("planSection").scrollIntoView({behavior:"smooth",block:"start"}));
-document.getElementById("showPlanBtn").addEventListener("click",()=>document.getElementById("planSection").scrollIntoView({behavior:"smooth",block:"start"}));
-document.getElementById("retakeBtn").addEventListener("click",resetQuiz);
-const trackItems=["能主动问候、提问或邀请同伴","能尝试加入小组活动","被拒绝后能逐渐恢复情绪","能表达问题并提出解决办法","能拒绝不合理要求并知道如何求助","能主动维护或修复友谊"];
-document.getElementById("tracking").innerHTML=trackItems.map((x,i)=>`<label class="checkitem"><input type="checkbox" data-track="${i}"><span>${x}</span></label>`).join("");
-document.getElementById("saveTrackBtn").addEventListener("click",()=>{const n=[...document.querySelectorAll("[data-track]:checked")].length;document.getElementById("trackMsg").textContent=`本次已勾选 ${n}/${trackItems.length} 项。记录仅在当前页面中有效；若要长期比较，请自行记录第1周与第8周结果。`});
-document.getElementById("clearTrackBtn").addEventListener("click",()=>{document.querySelectorAll("[data-track]").forEach(c=>c.checked=false);document.getElementById("trackMsg").textContent="已清空当前勾选。"});
-renderQuestion();renderPlans();
-</script>
-</body>
-</html>
+$('family').innerHTML=`<div class="item"><h3>本次家长支持重点：${primary}${secondary!==primary?'、'+secondary:''}</h3><p>${pct<55?'先建立安全感，家长示范并陪练；把任务拆小，肯定尝试，不比较、不责备。':pct<80?'每周聚焦最需要发展的1—2项，安排短时练习，并具体反馈孩子做对的行为。':'整体表现较好，重点是复杂情境下的灵活判断和自主处理；尊重孩子选择，不替孩子包办普通分歧。'}</p><p><b>本次专属练习话术：</b>${support1.phrase}${secondary!==primary?'　备选：'+support2.phrase:''}</p></div><h3>每日复盘问题（本次测评定制）</h3><ol>${daily.map(x=>`<li>${x}</li>`).join('')}</ol>`;
+$('checklist').innerHTML=weeklyTasks.map((t,i)=>`<label class="check"><input type="checkbox" data-week-task="${i}"> <span>${t}</span></label>`).join('');}
+function modeLabel(){return pct<55?'基础支持模式':pct<80?'情境巩固模式':'优势迁移模式'}
+$('start').onclick=()=>{$('quiz').scrollIntoView({behavior:'smooth'})};$('prev').onclick=()=>{if(current>0){current--;renderQ()}};$('next').onclick=()=>{if(answers[current]===undefined)return;if(current<questions.length-1){current++;renderQ()}else{if(Object.keys(answers).length!==questions.length){$('toast').textContent='请完成所有题目';return}makeResults();$('quiz').classList.add('hidden');$('s2').classList.remove('hidden');$('s2').scrollIntoView({behavior:'smooth'})}};
+document.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>stage(b.dataset.next));document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>stage(b.dataset.back));$('again').onclick=()=>{answers={};current=0;['s2','s3','s4','s5','s6'].forEach(id=>$(id).classList.add('hidden'));$('quiz').classList.remove('hidden');renderQ();$('quiz').scrollIntoView({behavior:'smooth'})};renderQ();
+</script></body></html>
